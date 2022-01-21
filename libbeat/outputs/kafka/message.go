@@ -49,9 +49,6 @@ func (m *message) initProducerMessage() {
 		Key:       sarama.ByteEncoder(m.key),
 		Value:     sarama.ByteEncoder(m.value),
 		Timestamp: m.ts,
-	}
-
-	if len(m.ref.client.recordHeaders) != 0 {
-		m.msg.Headers = m.ref.client.recordHeaders
+		Headers:   m.ref.client.recordHeaders,
 	}
 }
